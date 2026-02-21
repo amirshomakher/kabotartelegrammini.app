@@ -1,71 +1,310 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
 body {
-    font-family: sans-serif;
-    text-align: center;
-    background: #100725;
-    color: white;
-    padding-top: 50px;
+    background-color: #0a1928;
+    color: #ffffff;
+    min-height: 100vh;
 }
 
-button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 10px;
-    background: #3b22c53a;
-    color: rgb(255, 219, 13);
-    font-size: 16px;
-    cursor: pointer;
-}
-
-header {
-
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
     display: flex;
-    width: 80%;
+    flex-direction: column;
+}
+
+
+.main-content {
+    flex: 1;
+    padding: 20px 16px 80px 16px;
+    overflow-y: auto;
+}
+
+
+.welcome-header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-around;
-    background-color: rgba(41, 41, 41, 0.295);
-    backdrop-filter: blur(10%);
-    margin-top: -30px;
-    padding: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 24px;
+    background: rgba(255, 215, 0, 0.1);
+    padding: 12px 16px;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+.user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #FFD700; 
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.crown-icon {
+    color: #FFD700;
+    font-size: 18px;
+}
+
+.date-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #B8860B; 
+    font-size: 14px;
+    background: rgba(255, 215, 0, 0.05);
+    padding: 6px 12px;
     border-radius: 20px;
 }
 
-.headerlogo {
+
+.gold-card {
+    background: linear-gradient(145deg, #1a2f3f, #0d1e2c);
+    border-radius: 28px;
+    padding: 24px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.15);
+}
+
+.gold-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.gold-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FFD700, #B8860B);
+    border-radius: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-}
-
-.headerlogo h1 {
-    font-size: 1rem;
-}
-
-.h1{
-    font-size: 2rem;
-    margin-top: 50px;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
 }
 
-header nav {
+.gold-icon i {
+    font-size: 30px;
+    color: #0a1928;
+}
+
+.gold-price-container {
+    position: relative;
+    z-index: 1;
+}
+
+.gold-label {
+    display: block;
+    color: #B8860B;
+    font-size: 14px;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.gold-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+.price-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: #FFD700;
+    line-height: 1;
+}
+
+.price-currency {
+    font-size: 18px;
+    color: #B8860B;
+}
+
+.gold-change {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: rgba(255, 215, 0, 0.15);
+    color: #4CAF50;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    z-index: 1;
+}
+
+.currency-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.currency-card {
+    background: #1a2f3f;
+    border-radius: 20px;
+    padding: 18px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.currency-card:hover {
+    transform: translateY(-2px);
+    border-color: #FFD700;
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.2);
+}
+
+.currency-header {
     display: flex;
     align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.currency-icon {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #FFD700, #B8860B);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0a1928;
+    font-size: 18px;
+}
+
+.currency-name {
+    color: #FFD700;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.currency-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+    direction: ltr;
+    text-align: left;
+}
+
+.currency-change {
+    font-size: 14px;
+    color: #4CAF50;
+    text-align: left;
+    direction: ltr;
+}
+
+
+.update-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: #B8860B;
+    font-size: 13px;
+    padding: 16px;
+    background: rgba(255, 215, 0, 0.05);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.update-info i {
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin: 0 auto;
+    background: #0a1928;
+    display: flex;
     justify-content: space-around;
-    text-decoration: none;
-    color: white;
-    list-style-type: none;
-    width: 50%;
+    align-items: center;
+    padding: 8px 16px 12px;
+    border-top: 2px solid rgba(255, 215, 0, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
-header nav li{
-    color: white;
-    font-size: 1rem;
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #B8860B;
+    font-size: 12px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 12px;
+    width: 70px;
 }
 
-header nav li:hover{
-    color: rgb(255, 219, 13);
-    font-size: 1rem;
-    cursor: pointer;
+.nav-item i {
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+
+.nav-item.active {
+    color: #FFD700;
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.nav-item.active i {
+    transform: translateY(-2px);
+}
+
+
+.positive-change {
+    color: #4CAF50 !important;
+}
+
+.negative-change {
+    color: #f44336 !important;
+}
+
+
+.main-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.main-content::-webkit-scrollbar-track {
+    background: #1a2f3f;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+    background: #FFD700;
+    border-radius: 4px;
 }
