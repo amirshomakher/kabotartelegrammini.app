@@ -31,7 +31,7 @@ function updatepersanDate() {
   try {
     const persiandate = now.toLocaleDateString('fa-iR', options);
 
-    document.getElementById('persianDate').innerText = persianDate;
+    document.getElementById('persianDate').innerText = persiandate;
   } catch {
 
     document.getElementById('persianDate').innerText = '۱۴۰۲/۱۲/۲۵';
@@ -147,4 +147,5 @@ document.getElementById("send").onclick = () => {
 tg.onEvent('backButtonClicked', () => {
     tg.close();
 });
+
 
